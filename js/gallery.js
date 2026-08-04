@@ -4,33 +4,41 @@ const lightboxImg = document.getElementById("lightbox-img");
 const lightboxClose = document.getElementById("lightbox-close");
 const galleryImages = document.querySelectorAll(".gallery-img");
 
-// Function to open the selected image
-galleryImages.forEach(function (image) {
-  image.addEventListener("click", function () {
-    lightbox.classList.add("open"); 
-    lightboxImg.src = this.src; 
-    lightboxImg.alt = this.alt;
-  });
-});
+function openLightbox(image) {
+  lightboxImg.src = image.src;
+  lightboxImg.alt = image.alt || "Enlarged gallery image";
+  lightbox.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
 
-// Function to close the lightbox
 function closeLightbox() {
   lightbox.classList.remove("open");
   lightboxImg.src = "";
+  lightboxImg.alt = "";
+  document.body.style.overflow = "";
 }
 
-lightboxClose.addEventListener("click", closeLightbox);
+// Run only on pages with lightbox
+if (lightbox && lightboxImg && lightboxClose) {
+  galleryImages.forEach(function (image) {
+    image.addEventListener("click", function () {
+      openLightbox(image);
+    });
+  });
 
-// Close by clicking the background
-lightbox.addEventListener("click", function (event) {
-  if (event.target === lightbox) {
-    closeLightbox();
-  }
-});
+  lightboxClose.addEventListener("click", closeLightbox);
 
-// Close with the Escape key
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-});
+  // Close when the dark background is clicked
+  lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Close with the Escape key
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && lightbox.classList.contains("open")) {
+      closeLightbox();
+    }
+  });
+}
