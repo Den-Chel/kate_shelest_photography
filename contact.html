@@ -127,60 +127,81 @@
             </div>
 
             <form id="contact-form" class="contact-form" novalidate>
-                <div class="row g-4">
+    <div class="row g-4">
 
-                    <div class="col-12 col-md-6">
-                        <label for="first-name" class="form-label">First Name</label>
-                        <input type="text" id="first-name" name="firstName" class="form-control">
-                        <p class="error-message" id="first-name-error"></p>
-                    </div>
+        <!-- First name -->
+        <div class="col-12 col-md-6">
+            <input type="text" id="first-name" name="firstName"
+                class="form-control" placeholder="Enter your first name"
+                aria-label="First name">
 
-                    <div class="col-12 col-md-6">
-                        <label for="last-name" class="form-label">Last Name</label>
-                        <input type="text" id="last-name" name="lastName" class="form-control">
-                        <p class="error-message" id="last-name-error"></p>
-                    </div>
+            <p class="error-message" id="first-name-error"></p>
+        </div>
 
-                    <div class="col-12 col-md-6">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control">
-                        <p class="error-message" id="email-error"></p>
-                    </div>
+        <!-- Last name -->
+        <div class="col-12 col-md-6">
+            <input type="text" id="last-name" name="lastName"
+                class="form-control" placeholder="Enter your last name"
+                aria-label="Last name">
 
-                    <div class="col-12 col-md-6">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control">
-                        <p class="error-message" id="phone-error"></p>
-                    </div>
+            <p class="error-message" id="last-name-error"></p>
+        </div>
 
-                    <div class="col-12">
-                        <label for="service" class="form-label">Photography Service</label>
-                        <select id="service" name="service" class="form-select">
-                            <option value="">Choose a service</option>
-                            <option value="family">Family</option>
-                            <option value="portrait">Portrait</option>
-                            <option value="maternity">Maternity</option>
-                            <option value="lifestyle">Lifestyle</option>
-                            <option value="wedding">Wedding</option>
-                            <option value="headshot">Headshot</option>
-                        </select>
-                        <p class="error-message" id="service-error"></p>
-                    </div>
+        <!-- Email -->
+        <div class="col-12 col-md-6">
+            <input type="email" id="email" name="email"
+                class="form-control" placeholder="Enter your email address"
+                aria-label="Email address">
 
-                    <div class="col-12">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-control" rows="6"
-                            placeholder="Tell me about your session"></textarea>
-                        <p class="error-message" id="message-error"></p>
-                    </div>
+            <p class="error-message" id="email-error"></p>
+        </div>
 
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn-dark-custom">Send Message</button>
-                    </div>
-                </div>
+        <!-- Phone -->
+        <div class="col-12 col-md-6">
+            <input type="tel" id="phone" name="phone"
+                class="form-control" placeholder="Enter your phone number"
+                aria-label="Phone number">
 
-                <p id="form-success" class="form-success text-center"></p>
-            </form>
+            <p class="error-message" id="phone-error"></p>
+        </div>
+
+        <!-- Service -->
+        <div class="col-12">
+            <select id="service" name="service"
+                class="form-select" aria-label="Photography service">
+                <option value="">Choose a service</option>
+                <option value="family">Family</option>
+                <option value="portrait">Portrait</option>
+                <option value="maternity">Maternity</option>
+                <option value="lifestyle">Lifestyle</option>
+                <option value="wedding">Wedding</option>
+                <option value="headshot">Headshot</option>
+            </select>
+
+            <p class="error-message" id="service-error"></p>
+        </div>
+
+        <!-- Message -->
+        <div class="col-12">
+            <textarea id="message" name="message"
+                class="form-control" rows="6"
+                placeholder="Tell me about your session"
+                aria-label="Message"></textarea>
+
+            <p class="error-message" id="message-error"></p>
+        </div>
+
+        <!-- Submit button -->
+        <div class="col-12 text-center">
+            <button type="submit" class="btn-dark-custom">
+                Send Message
+            </button>
+        </div>
+
+    </div>
+
+    <p id="form-success" class="form-success text-center"></p>
+</form>
         </section>
     </main>
 
