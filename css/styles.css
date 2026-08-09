@@ -172,14 +172,16 @@ a {
 
 .gallery-img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
+  object-position: center;
+  display: block;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
 
 .gallery-img:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* Lightbox */
