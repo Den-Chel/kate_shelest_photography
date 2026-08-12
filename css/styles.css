@@ -262,11 +262,22 @@ a {
   line-height: 1.5;
 }
 
-.reviews-section .row {
+/* Review cards */
+.reviews-section > .row {
   justify-content: center;
 }
 
-.reviews-section .row > div {
+.reviews-section > .row > div {
+  text-align: center;
+}
+
+/* Keep review form fields left-aligned */
+#review-form .row > div {
+  text-align: left;
+}
+
+/* Center only the submit button */
+#review-form .row > div:last-child {
   text-align: center;
 }
 

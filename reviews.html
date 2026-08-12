@@ -190,17 +190,30 @@
 
                     <div class="row g-4">
 
-                        <!-- Name -->
+                        <!-- First Name -->
                         <div class="col-12 col-md-6">
                             <input type="text"
                                 id="review-name"
                                 name="name"
                                 class="form-control"
-                                placeholder="Enter your name"
-                                aria-label="Your name">
+                                placeholder="Enter your first name"
+                                aria-label="First name">
 
                             <p class="error-message"
                                 id="review-name-error"></p>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="col-12 col-md-6">
+                            <input type="text"
+                                id="review-last-name"
+                                name="lastname"
+                                class="form-control"
+                                placeholder="Enter your last name"
+                                aria-label="Last name">
+
+                            <p class="error-message"
+                                id="review-last-name-error"></p>
                         </div>
 
                         <!-- Session -->
@@ -224,7 +237,7 @@
                         </div>
 
                         <!-- Rating -->
-                        <div class="col-12">
+                        <div class="col-12 col-md-6">
                             <select id="review-rating"
                                 name="rating"
                                 class="form-select"
