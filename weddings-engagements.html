@@ -67,10 +67,24 @@
                 </div>
         </main>
 
-        <!-- Lightbox -->
-        <div id="lightbox" class="lightbox">
-                <span id="lightbox-close" class="lightbox-close">&times;</span>
-                <img id="lightbox-img" class="lightbox-content" src="" alt="Enlarged photo">
+        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer">
+                <!-- Close -->
+                <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close image">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+
+                <!-- Previous -->
+                <button id="lightbox-prev" class="lightbox-prev" type="button" aria-label="Previous image">
+                        <span aria-hidden="true">&#10094;</span>
+                </button>
+
+                <!-- Enlarged image -->
+                <img id="lightbox-img" src="" alt="">
+
+                <!-- Next -->
+                <button id="lightbox-next" class="lightbox-next" type="button" aria-label="Next image">
+                        <span aria-hidden="true">&#10095;</span>
+                </button>
         </div>
 
         <!-- Footer -->
