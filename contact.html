@@ -64,8 +64,9 @@
                 <div class="col-12 col-md-6">
                     <input type="tel" id="phone" name="phone"
                         class="form-control" placeholder="Enter your phone number"
-                        aria-label="Phone number">
-
+                        aria-label="Phone number"
+                        autocomplete="tel"  inputmode="tel">
+                        
                     <p class="error-message" id="phone-error"></p>
                 </div>
 
@@ -74,12 +75,12 @@
                     <select id="service" name="service"
                         class="form-select" aria-label="Photography service">
                         <option value="">Choose a service</option>
-                        <option value="family">Family</option>
-                        <option value="portrait">Portrait</option>
+                        <option value="birthday-milestones">Birthday Milestones</option>
+                        <option value="branding">Branding</option>
                         <option value="maternity">Maternity</option>
-                        <option value="lifestyle">Lifestyle</option>
-                        <option value="wedding">Wedding</option>
-                        <option value="headshot">Headshot</option>
+                        <option value="newborn">Newborn</option>
+                        <option value="portrait">Portrait</option>
+                        <option value="weddings-engagements">Intimate Weddings &amp; Engagements</option>
                     </select>
 
                     <p class="error-message" id="service-error"></p>
@@ -91,8 +92,6 @@
                         class="form-control" rows="6"
                         placeholder="Tell me about your session"
                         aria-label="Message"></textarea>
-
-                    <p class="error-message" id="message-error"></p>
                 </div>
 
                 <!-- Submit button -->

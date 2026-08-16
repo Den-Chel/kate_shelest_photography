@@ -3,89 +3,132 @@
 // Get the review form
 const reviewForm = document.getElementById("review-form");
 
+// Run only if the form exists
 if (reviewForm) {
-    reviewForm.addEventListener("submit", function (event) {
-        
-        event.preventDefault();
-        clearReviewErrors();
+  reviewForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-        const name = document.getElementById("review-name");
-        const session = document.getElementById("review-session");
-        const rating = document.getElementById("review-rating");
-        const message = document.getElementById("review-message");
-        const success = document.getElementById("review-success");
+    clearReviewErrors();
 
-        let isValid = true;
+    // Get the form fields
+    const firstName = document.getElementById("review-name");
+    const lastName = document.getElementById("review-last-name");
+    const session = document.getElementById("review-session");
+    const rating = document.getElementById("review-rating");
+    const message = document.getElementById("review-message");
+    const reviewSuccess = document.getElementById("review-success");
 
-        // Check name
-        if (name.value.trim() === "") {
-            showReviewError(
-                name,
-                "review-name-error",
-                "Please enter your name."
-            );
-            isValid = false;
-        }
+    let isValid = true;
 
-        // Check session 
-        if (session.value === "") {
-            showReviewError(
-                session,
-                "review-session-error",
-                "Please choose a photography session."
-            );
-            isValid = false;
-        }
+    // Validate first name
+    if (firstName.value.trim() === "") {
+      showReviewError(
+        firstName,
+        "review-name-error",
+        "Please enter your first name."
+      );
+      isValid = false;
+    } else if (!isValidReviewName(firstName.value.trim())) {
+      showReviewError(
+        firstName,
+        "review-name-error",
+        "Please use letters only for your first name."
+      );
+      isValid = false;
+    }
 
-        // Check rating
-        if (rating.value === "") {
-            showReviewError(
-                rating,
-                "review-rating-error",
-                "Please choose a rating."
-            );
-            isValid = false;
-        }
+    // Validate last name 
+    if (
+        lastName.value.trim() !== "" &&
+        !isValidReviewName(lastName.value.trim())) {
+        showReviewError(
+        lastName,
+        "review-last-name-error",
+        "Please use letters only for your last name."
+      );
+      isValid = false;
+    }
 
-        // Check review
-        if (message.value.trim() === "") {
-            showReviewError(
-                message,
-                "review-message-error",
-                "Please write your review."
-            );
-            isValid = false;
-        }
+    // Validate photography session
+    if (session.value === "") {
+      showReviewError(
+        session,
+        "review-session-error",
+        "Please choose a photography session."
+      );
+      isValid = false;
+    }
 
-        // Show success message
-        if (isValid) {
-            success.textContent =
-                "Thank you for sharing your experience!";
-            reviewForm.reset();
-        }
-    });
+    // Validate rating
+    if (rating.value === "") {
+      showReviewError(
+        rating,
+        "review-rating-error",
+        "Please choose a rating."
+      );
+      isValid = false;
+    }
+
+    // Validate review message
+    if (message.value.trim() === "") {
+      showReviewError(
+        message,
+        "review-message-error",
+        "Please write your review."
+      );
+      isValid = false;
+    }
+
+    // Show success message
+    if (isValid) {
+      reviewSuccess.textContent =
+        "Thank you for sharing your experience!";
+
+      reviewForm.reset();
+    }
+  });
 }
 
 // Show an error
 function showReviewError(field, errorId, message) {
-    field.classList.add("is-invalid");
-    document.getElementById(errorId).textContent = message;
+  field.classList.add("is-invalid");
+
+  const errorElement = document.getElementById(errorId);
+
+  if (errorElement) {
+    errorElement.textContent = message;
+  }
 }
 
 // Clear old errors
 function clearReviewErrors() {
-    const fields = reviewForm.querySelectorAll(
-        ".form-control, .form-select"
-    );
-    const errors = reviewForm.querySelectorAll(".error-message");
+  const fields = reviewForm.querySelectorAll(
+    ".form-control, .form-select"
+  );
 
-    fields.forEach(function (field) {
-        field.classList.remove("is-invalid");
-    });
+  const errorMessages =
+    reviewForm.querySelectorAll(".error-message");
 
-    errors.forEach(function (error) {
-        error.textContent = "";
-    });
+  fields.forEach(function (field) {
+    field.classList.remove("is-invalid");
+  });
 
-    document.getElementById("review-success").textContent = "";
+  errorMessages.forEach(function (error) {
+    error.textContent = "";
+  });
+
+  const reviewSuccess =
+    document.getElementById("review-success");
+
+  if (reviewSuccess) {
+    reviewSuccess.textContent = "";
+  }
+}
+
+// Check the name format
+function isValidReviewName(name) {
+  const namePattern =
+    /^[\p{L}]+(?:[ '\u2019-][\p{L}]+)*$/u;
+
+  return namePattern.test(name);
 }
